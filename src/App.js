@@ -35,10 +35,17 @@ function App() {
   return (
     <ThemeProvider theme={currentTheme}>
       <GlobalStyle />
-      <Layout
+      <button onClick={handleToggleTheme}>Restore Layout</button>
+      {theme === 'dark' && (
+        <Layout
         onToggleTheme={handleToggleTheme}
         selectedTheme={theme}
-      />
+        />
+      )}
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     </ThemeProvider>
   );
 };
