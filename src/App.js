@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 
 import { ThemeProvider } from 'styled-components';
 
@@ -9,6 +9,8 @@ import themes from './styles/themes';
 function App() {
 
   const [theme, setTheme] = useState(JSON.parse(localStorage.getItem('theme')));
+
+  const firstRender = useRef(true);
 
   const currentTheme = useMemo(() => {
     return themes[theme] || themes.dark;
@@ -23,6 +25,10 @@ function App() {
   }
 
   useEffect(() => {
+    if(firstRender.current){
+      firstRender.current = false;
+      return;
+    }
     localStorage.setItem('theme', JSON.stringify(theme));
   }, [theme]);
 
